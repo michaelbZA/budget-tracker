@@ -7,7 +7,8 @@ import {
   FileText,
   BarChart3,
   DollarSign,
-  Loader
+  Loader,
+  Wallet
 } from 'lucide-react';
 import './App.css';
 import { useIncome } from "./hooks/useIncome";
@@ -22,6 +23,7 @@ import Debts from './components/Debts/Debts';
 import Savings from './components/Savings/Savings';
 import Transactions from './components/Transactions/Transactions';
 import Reports from './components/Reports/Reports';
+import Budget from './components/Budget/Budget';
 
 function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -128,7 +130,8 @@ function App() {
                 { id: 'debts', label: 'Debts', icon: CreditCard },
                 { id: 'savings', label: 'Savings', icon: Target },
                 { id: 'transactions', label: 'Transactions', icon: FileText },
-                { id: 'reports', label: 'Reports', icon: BarChart3 }
+                { id: 'reports', label: 'Reports', icon: BarChart3 },
+                { id: 'budget', label: 'Budget', icon: Wallet }
               ].map(({ id, label, icon: Icon }) => (
                 <button
                   key={id}
@@ -204,6 +207,9 @@ function App() {
             debts={debts}
             savings={savings}
           />
+        )}
+        {activeTab === 'budget' && (
+          <Budget />
         )}
       </main>
     </div>
